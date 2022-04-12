@@ -13,11 +13,7 @@ public class CarController {
 
     @GetMapping()
     public String getCarsValue(@RequestParam(value = "count", required = false) Integer count, Model model) {
-        if (count != null) {
-            model.addAttribute("cars", CarServiceImpl.getCountCar(count));
-        } else {
-            model.addAttribute("cars", CarServiceImpl.listCar());
-        }
+        model.addAttribute("cars", CarServiceImpl.getCountCar(count));
         return "cars";
     }
 }

@@ -1,6 +1,9 @@
 package service;
 
 import model.Car;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.RequestParam;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -16,11 +19,8 @@ public class CarServiceImpl {
         cars.add(new Car("KIA", 6, 2013));
     }
 
-    public static List<Car> listCar() {
-        return cars;
-    }
-
     public static List<Car> getCountCar(Integer count) {
+        if (count == null || count == 0) return cars;
         return cars.stream().limit(count).collect(Collectors.toList());
     }
 
